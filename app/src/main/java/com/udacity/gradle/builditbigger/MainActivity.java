@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import com.example.JokesFromHell;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        JokesFromHell jfh = new JokesFromHell();
+        new EndpointsAsyncTask().execute();
+
+
+      /*  JokesFromHell jfh = new JokesFromHell();
         Thread thread = new Thread(jfh);
         thread.start();
         try {
@@ -52,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         }
         String joke = jfh.getJoke();
 
-        Toast.makeText(this, joke, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, JokeDisplayActivity.class);
+        intent.putExtra("joke", joke);
+        startActivity(intent);*/
+        //Toast.makeText(this, joke, Toast.LENGTH_LONG).show();
     }
 
 
