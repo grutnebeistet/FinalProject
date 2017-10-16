@@ -44,30 +44,7 @@
     <orderEntry type="library" exported="" name="appengine-endpoints-1.9.56" level="project" />
     <orderEntry type="library" exported="" name="appengine-endpoints-deps-1.9.56" level="project" />
     <orderEntry type="library" exported="" name="servlet-api-2.5" level="project" />
-    <orderEntry type="library" exported="" name="google-api-client-1.12.0-beta" level="project" />
     <orderEntry type="library" exported="" name="appengine-api-1.0-sdk-1.9.56" level="project" />
-    <orderEntry type="library" exported="" name="google-oauth-client-1.12.0-beta" level="project" />
-    <orderEntry type="library" exported="" name="javax.ws.rs-api-2.0.1" level="project" />
-    <orderEntry type="library" exported="" name="resteasy-client-3.0.2.Final" level="project" />
-    <orderEntry type="library" exported="" name="google-http-client-1.12.0-beta" level="project" />
-    <orderEntry type="library" exported="" name="jsr305-1.3.9" level="project" />
-    <orderEntry type="library" exported="" name="guava-jdk5-13.0" level="project" />
-    <orderEntry type="library" exported="" name="resteasy-jaxrs-3.0.2.Final" level="project" />
-    <orderEntry type="library" exported="" name="xpp3-1.1.4c" level="project" />
-    <orderEntry type="library" exported="" name="jaxrs-api-3.0.2.Final" level="project" />
-    <orderEntry type="library" exported="" name="slf4j-simple-1.5.8" level="project" />
-    <orderEntry type="library" exported="" name="scannotation-1.0.3" level="project" />
-    <orderEntry type="library" exported="" name="jsr250-api-1.0" level="project" />
-    <orderEntry type="library" exported="" name="activation-1.1" level="project" />
-    <orderEntry type="library" exported="" name="commons-io-2.1" level="project" />
-    <orderEntry type="library" exported="" name="jcip-annotations-1.0" level="project" />
-    <orderEntry type="library" exported="" name="slf4j-api-1.5.8" level="project" />
-    <orderEntry type="library" exported="" name="javassist-3.12.1.GA" level="project" />
-    <orderEntry type="library" exported="" name="httpclient-4.2.1" level="project" />
-    <orderEntry type="library" exported="" name="httpcore-4.2.1" level="project" />
-    <orderEntry type="library" exported="" name="commons-logging-1.1.1" level="project" />
-    <orderEntry type="library" exported="" name="commons-codec-1.6" level="project" />
-    <orderEntry type="library" exported="" name="xalan-2.7.1" level="project" />
     <orderEntry type="library" exported="" name="backend.backend-android-endpoints" level="project" />
   </component>
 </module>

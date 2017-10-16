@@ -9,6 +9,8 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    public EndpointsAsyncTask endpointsAsyncTask;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +41,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        new EndpointsAsyncTask().execute();
+        endpointsAsyncTask = new EndpointsAsyncTask(this);
+        endpointsAsyncTask.execute();
 
-
-      /*  JokesFromHell jfh = new JokesFromHell();
-        Thread thread = new Thread(jfh);
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        String joke = jfh.getJoke();
-
-        Intent intent = new Intent(this, JokeDisplayActivity.class);
-        intent.putExtra("joke", joke);
-        startActivity(intent);*/
-        //Toast.makeText(this, joke, Toast.LENGTH_LONG).show();
     }
 
 

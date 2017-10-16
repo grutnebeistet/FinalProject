@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -18,27 +19,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        free {
+            applicationId = "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            applicationId = "com.udacity.gradle.builditbigger.paid"
+        }
+    }
+    sourceSets {
+        main { java.srcDirs = ['src/main/java'] }
+        free {
+            java.srcDirs = ['src/free/java', 'src/free/java/']
+            manifest.srcFile 'src/free/AndroidManifest.xml'
+        }
+        paid {
+            java.srcDirs = ['src/paid/java', 'src/paid/java/']
+            manifest.srcFile 'src/paid/AndroidManifest.xml'
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.3-alpha', {
+    //  compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     androidTestCompile 'com.google.code.findbugs:jsr305:3.0.2'
+    testCompile 'junit:junit:4.12'
+
     compile project(':jokefactory')
-
-    // compile project(':jokefactory')
     compile project(":jokedisplayer")
+    compile project(path: ':backend', configuration: 'android-endpoints')
 
-// https://mvnrepository.com/artifact/com.google.http-client/google-http-client-android
-    compile group: 'com.google.http-client', name: 'google-http-client-android', version: '1.12.0-beta'
-
-
+    //   compile group: 'com.google.http-client', name: 'google-http-client-android', version: '1.12.0-beta'
 
     compile 'com.android.support:appcompat-v7:26.0.2'
     compile 'com.jakewharton.timber:timber:4.5.1'
-    compile 'com.google.android.gms:play-services-ads:11.0.4'
+    freeCompile 'com.google.android.gms:play-services-ads:11.0.4'
     compile 'com.google.code.findbugs:jsr305:3.0.2'
-    compile project(path: ':backend', configuration: 'android-endpoints')
 }

@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class JokesFromHell implements Runnable {
+public class JokesFromHell { // implements Runnable {
 
     private String jokeurl = "https://icanhazdadjoke.com/";
     private volatile String mJoke = "Default Joke - laugh! (Something's wrong though :( )";
@@ -24,9 +24,8 @@ public class JokesFromHell implements Runnable {
     }
 
 
+    public String getJoke() {
 
-    @Override
-    public void run() {
         URL obj = getUrl(jokeurl);
         try {
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -51,12 +50,9 @@ public class JokesFromHell implements Runnable {
 
             System.out.println(response.toString());
             mJoke = response.toString();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getJoke() {
         return mJoke;
     }
 }
