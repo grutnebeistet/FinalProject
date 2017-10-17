@@ -5,16 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public EndpointsAsyncTask endpointsAsyncTask;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        spinner = findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
     }
 
 
@@ -41,10 +46,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
+        spinner.setVisibility(View.VISIBLE);
+        view.setVisibility(View.GONE);
+
         endpointsAsyncTask = new EndpointsAsyncTask(this);
         endpointsAsyncTask.execute();
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        spinner.setVisibility(View.GONE);
+        findViewById(R.id.get_joke_button).setVisibility(View.VISIBLE);
+    }
 }

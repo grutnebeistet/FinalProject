@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.JokesFromHell;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -61,5 +62,6 @@ public class EndpointsAsyncTask
         Intent intent = new Intent(context, JokeDisplayActivity.class);
         intent.putExtra("joke", result);
         context.startActivity(intent);
+        Log.d("postExec", "Joke: " + result);
     }
 }

@@ -10,8 +10,6 @@ import java.net.URL;
 public class JokesFromHell { // implements Runnable {
 
     private String jokeurl = "https://icanhazdadjoke.com/";
-    private volatile String mJoke = "Default Joke - laugh! (Something's wrong though :( )";
-
 
     private URL getUrl(String strUrl) {
         URL url = null;
@@ -25,7 +23,7 @@ public class JokesFromHell { // implements Runnable {
 
 
     public String getJoke() {
-
+        String joke = null;
         URL obj = getUrl(jokeurl);
         try {
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -49,10 +47,10 @@ public class JokesFromHell { // implements Runnable {
             in.close();
 
             System.out.println(response.toString());
-            mJoke = response.toString();
+            joke = response.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return mJoke;
+        return joke;
     }
 }

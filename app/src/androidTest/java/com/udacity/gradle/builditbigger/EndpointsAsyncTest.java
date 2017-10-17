@@ -5,9 +5,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.udacity.gradle.builditbigger.MainActivity;
-import com.udacity.gradle.builditbigger.R;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -39,7 +36,8 @@ public class EndpointsAsyncTest {
     public void testAsyncTask() throws Throwable {
         String retrievedJoke = mActivityRule.getActivity().endpointsAsyncTask.get();
         assertThat(retrievedJoke,not(isEmptyOrNullString()));
-        Log.d("Testing", "Jokezz: " + retrievedJoke);
+        Log.d("Testing", "Joke: " + retrievedJoke);
+        System.out.println("Test joke: " + retrievedJoke);
         onView(withId(R.id.display_joke_textview)).check(matches(withText(retrievedJoke)));
 
     }
