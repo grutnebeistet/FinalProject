@@ -9,9 +9,10 @@ import java.net.URL;
 
 public class JokesFromHell { // implements Runnable {
 
-    private String jokeurl = "https://icanhazdadjoke.com/";
 
-    private URL getUrl(String strUrl) {
+    private static String jokeurl = "https://icanhazdadjoke.com/";
+
+    private static URL getUrl(String strUrl) {
         URL url = null;
         try {
             url = new URL(strUrl);
@@ -21,10 +22,15 @@ public class JokesFromHell { // implements Runnable {
         return url;
     }
 
+    public static String getTestJoke() {
+        return "hehe funny phunny";
+    }
 
-    public String getJoke() {
-        String joke = null;
+    public static String getJoke() {
+        System.out.println("retrieving joke...");
+        String joke = getTestJoke();
         URL obj = getUrl(jokeurl);
+
         try {
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("GET");

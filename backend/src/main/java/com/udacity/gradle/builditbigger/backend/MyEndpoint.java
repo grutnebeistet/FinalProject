@@ -6,11 +6,13 @@
 
 package com.udacity.gradle.builditbigger.backend;
 
+import com.example.JokesFromHell;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
-import javax.inject.Named;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * An endpoint class we are exposing
@@ -27,13 +29,22 @@ import javax.inject.Named;
 public class MyEndpoint {
 
     /**
-     * A simple endpoint method that takes a name and says Hi back
+     * A simple endpoint method that returns a joke from jokefactory
+     * Here is where you should call the Joke Library and set the data to return a joke!
      */
     @ApiMethod(name = "tellJoke")
-    public MyBean tellJoke(@Named("joke") String joke) {
+    public MyBean tellJoke() {
         MyBean response = new MyBean();
-        response.setData(joke);
 
+        try {
+            CountDownLatch latch = new CountDownLatch(5);
+            String joke = JokesFromHell.getJoke();
+            latch.countDown();
+            latch.await(10, TimeUnit.SECONDS);
+            response.setData(joke);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         return response;
     }
 

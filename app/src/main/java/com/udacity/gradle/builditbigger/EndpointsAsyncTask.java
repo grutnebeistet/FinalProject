@@ -47,10 +47,10 @@ public class EndpointsAsyncTask
             myApiService = builder.build();
         }
 
-        String joke = new JokesFromHell().getJoke();
+        // Instead of calling the joke here, it should be returned from the backend library and then returned from this class
 
         try {
-            return myApiService.tellJoke(joke).execute().getData();
+            return myApiService.tellJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
