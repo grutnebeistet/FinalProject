@@ -27,17 +27,15 @@ import java.util.concurrent.TimeUnit;
         )
 )
 public class MyEndpoint {
-
     /**
      * A simple endpoint method that returns a joke from jokefactory
      * Here is where you should call the Joke Library and set the data to return a joke!
      */
-    @ApiMethod(name = "tellJoke")
+    @ApiMethod(name = "tellJoke", httpMethod = ApiMethod.HttpMethod.GET)
     public MyBean tellJoke() {
         MyBean response = new MyBean();
-
         try {
-            CountDownLatch latch = new CountDownLatch(5);
+            CountDownLatch latch = new CountDownLatch(1);
             String joke = JokesFromHell.getJoke();
             latch.countDown();
             latch.await(10, TimeUnit.SECONDS);
@@ -45,6 +43,7 @@ public class MyEndpoint {
         }catch (InterruptedException e){
             e.printStackTrace();
         }
+       // response.setData(JokesFromHell.getJoke());
         return response;
     }
 
